@@ -11,12 +11,15 @@ DB_HOST=os.getenv("DB_HOST")
 DB_NAME= os.getenv("DB_NAME")
 DB_PORT= os.getenv("DB_PORT")
 
+print (DB_USER)
+
 URL = f"mysql+mysqlconnector://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 engine = create_engine(URL)
 
-sessionlocal = sessionmaker(bind=engine, autoflush=False,expire_oncommit=False)
+sessionlocal = sessionmaker(bind=engine, autoflush=False,expire_on_commit=False)
 
-query = "SELECT * from persona"
+#query = "SELECT * from persona"
 db = sessionlocal()
-resultado = db.query()
+#resultado = db.query()
+Base = declarative_base()
